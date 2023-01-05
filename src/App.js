@@ -42,6 +42,11 @@ const App = (props) => {
     !favoriteList && setFavoriteMovies([...favoriteMovies, movie]);
   };
 
+  const removeFavorites = (movie) => {
+    const favoriteList = favoriteMovies.filter((fav) => fav.id !== movie.id);
+    setFavoriteMovies(favoriteList);
+  };
+
   return (
     <div>
       <nav className="navbar navbar-dark bg-dark">
@@ -59,13 +64,14 @@ const App = (props) => {
             </Route>
 
             <Route path="/movies/add">
-              <EditMovieForm movies={movies} setMovies={setMovies} />
+              <EditMovieForm setMovies={setMovies} />
             </Route>
 
             <Route path="/movies/:id">
               <Movie
                 deleteMovie={deleteMovie}
                 addToFavorites={addToFavorites}
+                removeFavorites={removeFavorites}
               />
             </Route>
 

@@ -6,7 +6,7 @@ import axios from "axios";
 
 const Movie = (props) => {
   const { addToFavorites } = props;
-  const { deleteMovie } = props;
+  const { deleteMovie, removeFavorites } = props;
 
   const [movie, setMovie] = useState("");
 
@@ -85,6 +85,7 @@ const Movie = (props) => {
                     onClick={() => {
                       deleteMovie(id);
                       push("/movies");
+                      removeFavorites(movie);
                     }}
                   />
                 </span>
